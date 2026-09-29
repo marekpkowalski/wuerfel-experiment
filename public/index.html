@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Würfel-Experiment</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><rect x='.5' y='.5' width='9' height='9' rx='2' fill='%23fff' stroke='%231e2b4f'/><circle cx='3' cy='3' r='1' fill='%231e2b4f'/><circle cx='5' cy='5' r='1' fill='%231e2b4f'/><circle cx='7' cy='7' r='1' fill='%231e2b4f'/></svg>">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="start-page">
+  <main class="start">
+    <div class="start-dice" aria-hidden="true" id="start-dice"></div>
+    <h1 data-t="title">Würfel-Experiment</h1>
+    <p class="lead" data-t="start_lead"></p>
+
+    <form id="start-form" class="start-form">
+      <label class="field">
+        <span data-t="teams_label"></span>
+        <input type="number" name="teams" min="1" max="30" value="20" inputmode="numeric" required>
+      </label>
+      <button type="submit" class="primary" id="start-button" data-t="create"></button>
+      <p class="form-error" id="start-error" role="alert" hidden></p>
+    </form>
+    <p class="note" data-t="start_note"></p>
+    <p class="retention" data-t="retention_note"></p>
+    <p class="lang"><a id="lang-link"></a></p>
+  </main>
+  <footer class="site-footer"><a href="/impressum.html" data-t="imprint"></a> · <a href="/datenschutz.html" data-t="privacy"></a></footer>
+  <script type="module" src="/start.js"></script>
+</body>
+</html>

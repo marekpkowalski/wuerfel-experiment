@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Würfel-Experiment</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><rect x='.5' y='.5' width='9' height='9' rx='2' fill='%23fff' stroke='%231e2b4f'/><circle cx='3' cy='3' r='1' fill='%231e2b4f'/><circle cx='5' cy='5' r='1' fill='%231e2b4f'/><circle cx='7' cy='7' r='1' fill='%231e2b4f'/></svg>">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="is-loading">
+  <header class="topbar">
+    <p class="brand" data-t="title">Würfel-Experiment</p>
+    <div class="who">
+      <strong id="team-name"></strong>
+      <button type="button" class="text-button" id="change-team" data-t="change_team" hidden></button>
+    </div>
+    <label class="view-select">
+      <span data-t="view"></span>
+      <select id="view"></select>
+    </label>
+    <div class="meta">
+      <span id="conn" class="conn" data-status="connecting"></span>
+      <span id="timer" class="timer"></span>
+      <a id="lang-link" class="lang-link"></a>
+    </div>
+  </header>
+
+  <p id="banner" class="banner" role="status" hidden></p>
+
+  <main id="main" class="layout" data-mode="team">
+    <div class="side">
+      <section id="entry" class="panel entry" aria-labelledby="entry-status">
+        <div class="progress">
+          <p id="entry-status" class="progress-label"><span id="count" class="count">0</span> / 100 <span data-t="rolls"></span></p>
+          <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+        </div>
+        <p id="entry-hint" class="hint"></p>
+        <div id="pad" class="pad" role="group"></div>
+        <div id="entry-actions" class="entry-actions">
+          <button type="button" id="undo" class="secondary" data-t="undo"></button>
+          <button type="button" id="clear-cell" class="secondary" data-t="clear_cell" hidden></button>
+          <button type="button" id="cancel-edit" class="text-button" data-t="cancel_edit" hidden></button>
+        </div>
+        <ol id="log" class="log"></ol>
+        <button type="button" id="clear-team" class="danger-button" data-t="clear_team"></button>
+      </section>
+
+      <section id="qr-panel" class="panel qr-panel" hidden>
+        <h2 data-t="join_heading"></h2>
+        <div id="qr" class="qr"></div>
+        <p class="join-hint" data-t="join_hint"></p>
+        <p id="join-url" class="join-url"></p>
+        <p id="lan-warning" class="warn" data-t="lan_warning" hidden></p>
+      </section>
+
+      <section id="teams" class="panel teams" hidden>
+        <div class="panel-head">
+          <h2 data-t="teams_heading"></h2>
+          <button type="button" id="export" class="secondary small" data-t="export_csv" hidden></button>
+        </div>
+        <div class="table-wrap">
+          <table class="team-table">
+            <thead>
+              <tr>
+                <th scope="col" data-t="col_team"></th>
+                <th scope="col" data-t="col_progress"></th>
+                <th scope="col" data-t="col_active"></th>
+                <th scope="col" data-t="col_devices"></th>
+                <th scope="col" class="teacher-only"><span class="sr-only" data-t="clear"></span></th>
+              </tr>
+            </thead>
+            <tbody id="team-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div class="charts">
+      <figure class="panel chart">
+        <div class="chart-head">
+          <h2 id="freq-title"></h2>
+          <label class="toggle"><input type="checkbox" id="percent"> <span data-t="percent"></span></label>
+        </div>
+        <div id="chart-freq" class="plot"></div>
+        <details class="help"><summary data-t="help_summary"></summary><p data-t="help_freq"></p></details>
+      </figure>
+
+      <figure class="panel chart">
+        <div class="chart-head"><h2 id="runs-title"></h2></div>
+        <div id="chart-runs" class="plot"></div>
+        <details class="help"><summary data-t="help_summary"></summary><p data-t="help_runs"></p></details>
+      </figure>
+    </div>
+  </main>
+
+  <div id="picker" class="picker" hidden>
+    <div class="picker-box" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+      <h2 id="picker-title" data-t="pick_team"></h2>
+      <p data-t="pick_team_hint"></p>
+      <div id="picker-grid" class="picker-grid"></div>
+      <button type="button" id="picker-close" class="text-button" data-t="close" hidden></button>
+    </div>
+  </div>
+
+  <div id="ended" class="notice" hidden>
+    <h1 id="ended-title"></h1>
+    <p data-t="ended_hint"></p>
+  </div>
+
+  <footer class="site-footer"><a href="/impressum.html" data-t="imprint" target="_blank" rel="noopener"></a> · <a href="/datenschutz.html" data-t="privacy" target="_blank" rel="noopener"></a></footer>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+
+  <script src="/vendor/plotly.min.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
